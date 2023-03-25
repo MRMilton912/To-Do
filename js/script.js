@@ -10,21 +10,22 @@ function newItem() {
       $('#list').append(li);
     }
 
-  function crossOut() {
-    li.classList.toggle("strike");
-  }
+    function crossOut() {
+      li.toggleClass("strike");
+    }
+  
+    li.on("dblclick", function crossOut() {
+      li.toggleClass("strike");
+    });
 
-  li.on("dblclick", crossOut);
+    let crossOutButton = $('<crossOutButton></crossOutButton>');
+    crossOutButton.append(document.createTextNode('X'));
+    li.append(crossOutButton);
 
-  let crossOutButton = $('<crossOutButton></crossOutButton>');
-  crossOutButton.append(document.createTextNode('X'));
-  li.append(crossOutButton);
-
-  crossOutButton.on("click", deleteListItem);
-
-  function deleteListItem() {
-    li.classList.add("delete")
-  }
+  //crossOutButton.on("click", deleteListItem);
+  //function deleteListItem() {
+  //  li.classList.add("delete")
+ // }
 
   $('#list').sortable();
 }
